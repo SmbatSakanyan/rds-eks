@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata: 
+ name: app-deployment
+ labels:
+  name: app-deployment
+  app: rds-eks
+ annotations:
+    secret.reloader.stakater.com/reload: psql-secrets-manager
+
+spec:
+ replicas: {{ .Values.replicas }}
+ 
+ selector:
+  matchLabels:
+    name: app-deployment
+    app: rds-eks
+ 
+ template:
+  metadata:
+    name: my-app
+    labels:
+      name: app-deployment
+      app: rds-eks
+  spec:
+    containers:
+      - name : container-web
+        image: {{ .Values.image.repo }}:{{ .Values.image.tag }}
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: psql-secrets-manager
+                key: PASSWORD
+        ports:
+          - containerPort: 5000
