@@ -9,7 +9,7 @@ applications:
       - resources-finalizer.argocd.argoproj.io
       project: default
       source:
-        repoURL: https://github.com/SmbatSakanyan/rds-elks
+        repoURL: https://github.com/SmbatSakanyan/rds-eks
         targetRevision: main
         path: argocd/environments/dev/applications
       destination:
