@@ -4,9 +4,11 @@ metadata:
   name: cluster-autoscaler
   namespace: argocd
 spec:
+  project: default
   source:
-    path: https://github.com/kubernetes/autoscaler/releases/latest/download/cluster-autoscaler-autodeploy.yaml
-    targetPath: ./
+  - repoURL: https://kubernetes.github.io/autoscaler
+    chart: cluster-autoscaler
+    targetRevision: 9.29.1
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
