@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-autoscaler
+  namespace: argocd
+spec:
+  source:
+    path: https://github.com/kubernetes/autoscaler/releases/latest/download/cluster-autoscaler-autodeploy.yaml
+    targetPath: ./
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
