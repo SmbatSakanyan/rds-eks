@@ -12,13 +12,6 @@ spec:
     helm:
         values: |
           autoDiscovery.clusterName: testcluster2
-          rbac: 
-            serviceAccount:
-              annotations:
-                eks.amazonaws.com/role-arn: arn:aws:iam::548844171305:role/testcluster2-cluster-autoscaler-role
-              create: true
-              name: "cluster-autoscaler-sa"
-              automountServiceAccountToken: true
   destination:
     server: https://kubernetes.default.svc
     namespace: default
