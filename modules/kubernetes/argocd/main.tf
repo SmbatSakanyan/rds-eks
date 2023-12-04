@@ -33,3 +33,21 @@ resource "helm_release" "app" {
     "${file("./values/appofapps.yaml")}"
   ]
 }
+
+
+# resource "helm_release" "autoscaler" {
+#   # depends_on       = [helm_release.image-updater]
+#   name             = "autoscaler"
+#   repository       = ""
+#   chart            = "https://kubernetes.github.io/autoscaler"
+#   namespace        = ""
+#   create_namespace = true
+#   values = [
+#     "${file("./values/appofapps.yaml")}"
+#   ]
+# }
+
+
+
+
+
