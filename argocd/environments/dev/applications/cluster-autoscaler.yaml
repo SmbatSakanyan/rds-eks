@@ -11,10 +11,11 @@ spec:
     targetRevision: 9.29.1
     helm:
         values: |
-          autoDiscovery.clusterName: testcluster2
-          tags:
-            - k8s.io/cluster-autoscaler/enabled
-            - k8s.io/cluster-autoscaler/testcluster2
+          autoDiscovery:
+            clusterName: testcluster2
+            tags:
+              - k8s.io/cluster-autoscaler/enabled
+              - k8s.io/cluster-autoscaler/testcluster2
           rbac: 
             serviceAccount:
               annotations:
