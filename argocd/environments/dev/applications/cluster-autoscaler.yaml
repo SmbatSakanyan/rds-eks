@@ -1,29 +1,29 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: cluster-autoscaler
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://kubernetes.github.io/autoscaler
-    chart: cluster-autoscaler
-    targetRevision: 9.29.1
-    helm:
-        values: |
-          autoDiscovery:
-            clusterName: testcluster2
-            tags:
-              - k8s.io/cluster-autoscaler/enabled
-              - k8s.io/cluster-autoscaler/testcluster2
-          rbac: 
-            serviceAccount:
-              annotations:
-                eks.amazonaws.com/role-arn: arn:aws:iam::548844171305:role/testcluster2-cluster-autoscaler-role
-              create: true
-              name: "cluster-autoscaler-sa"
-              automountServiceAccountToken: true
-          awsRegion: us-east-2
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: cluster-autoscaler
+#   namespace: argocd
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://kubernetes.github.io/autoscaler
+#     chart: cluster-autoscaler
+#     targetRevision: 9.29.1
+#     helm:
+#         values: |
+#           autoDiscovery:
+#             clusterName: testcluster2
+#             tags:
+#               - k8s.io/cluster-autoscaler/enabled
+#               - k8s.io/cluster-autoscaler/testcluster2
+#           rbac: 
+#             serviceAccount:
+#               annotations:
+#                 eks.amazonaws.com/role-arn: arn:aws:iam::548844171305:role/testcluster2-cluster-autoscaler-role
+#               create: true
+#               name: "cluster-autoscaler-sa"
+#               automountServiceAccountToken: true
+#           awsRegion: us-east-2
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
