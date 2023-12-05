@@ -23,6 +23,7 @@ spec:
               create: true
               name: "cluster-autoscaler-sa"
               automountServiceAccountToken: true
+          awsRegion: us-east-2
   destination:
     server: https://kubernetes.default.svc
     namespace: default
